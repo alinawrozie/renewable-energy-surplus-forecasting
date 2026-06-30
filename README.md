@@ -31,9 +31,11 @@ The primary business goal is to enable an energy provider to offer a **free elec
 
 ## 3. Physical Modeling & Assumptions
 
-- **Air Density ($ho$):** Assumed standard value of $1.225 	ext{ kg/m}^3$.
+- **Air Density ($
+ho$):** Assumed standard value of $1.225 	ext{ kg/m}^3$.
 - **Wind Energy ($E_w$):** Modeled for a wind farm of **20 Horizontal Axis Wind Turbines (HAWT)**. Each turbine has a blade length of $L = 59.8	ext{ m}$, yielding a sweep area of $A = \pi \cdot L^2 pprox 11,234.4	ext{ m}^2$.
-  $$E_w = rac{1}{2} ho A (v_{	ext{m/s}})^3 \cdot 20 \cdot rac{1}{1000} \quad (	ext{kW})$$
+  $$E_w = rac{1}{2} 
+ho A (v_{	ext{m/s}})^3 \cdot 20 \cdot rac{1}{1000} \quad (	ext{kW})$$
   *(Wind speed is converted from kph to m/s by multiplying by $0.27778$.)*
 - **Solar Energy ($E_s$):** Modeled for a local solar park with active panel surface area $A_{	ext{solar}} = 5,000 	ext{ m}^2$ and average efficiency $\eta = 18\%$.
   $$E_s = A_{	ext{solar}} \cdot \eta \cdot I_{	ext{radiation}} \cdot rac{1}{1000} \quad (	ext{kW})$$
@@ -82,6 +84,4 @@ A naive threshold ($	ext{Surplus} > 0.0	ext{ kW}$) suffers high costs due to the
 - `data/` - Folder containing raw weather CSV files (not uploaded to GitHub).
 - `01_Data_Exploration.ipynb` - Processes raw weather files, models wind + solar energy, and outputs cleaned data.
 - `02_Modelling.ipynb` - Fits models (XGBoost, LSTM), evaluates performance, and sweeps business decision thresholds.
-- `Energy-Surplus-Forecasting-Presentation.pptx` - PowerPoint presentation showing methodology, comparison tables, and cost curves.
-- `update_presentation.py` - Script used to generate the presentation deck.
 - `requirements.txt` - Python package dependencies.
