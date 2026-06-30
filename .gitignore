@@ -1,0 +1,22 @@
+# Data files
+data/
+*.csv
+!requirement.csv
+!next24.csv
+
+# Python/Jupyter outputs
+.ipynb_checkpoints/
+.jupyter/
+__pycache__/
+*.pyc
+
+# Local model weights and logs
+*.keras
+*.h5
+*.log
+
+# OS specific files
+.DS_Store
+Thumbs.db
+
+~$*.pptx
