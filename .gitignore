@@ -2,7 +2,6 @@
 data/
 *.csv
 !requirement.csv
-!next24.csv
 
 # Python/Jupyter outputs
 .ipynb_checkpoints/
@@ -15,8 +14,10 @@ __pycache__/
 *.h5
 *.log
 
+# Presentation files
+*.pptx
+~$*.pptx
+
 # OS specific files
 .DS_Store
 Thumbs.db
-
-*.pptx
