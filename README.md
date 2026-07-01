@@ -31,14 +31,12 @@ The primary business goal is to enable an energy provider to offer a **free elec
 
 ## 3. Physical Modeling & Assumptions
 
-- **Air Density ($
-ho$):** Assumed standard value of $1.225 	ext{ kg/m}^3$.
-- **Wind Energy ($E_w$):** Modeled for a wind farm of **20 Horizontal Axis Wind Turbines (HAWT)**. Each turbine has a blade length of $L = 59.8	ext{ m}$, yielding a sweep area of $A = \pi \cdot L^2 pprox 11,234.4	ext{ m}^2$.
-  $$E_w = rac{1}{2} 
-ho A (v_{	ext{m/s}})^3 \cdot 20 \cdot rac{1}{1000} \quad (	ext{kW})$$
+- **Air Density ($\rho$):** Assumed standard value of $1.225 \text{ kg/m}^3$.
+- **Wind Energy ($E_w$):** Modeled for a wind farm of **20 Horizontal Axis Wind Turbines (HAWT)**. Each turbine has a blade length of $L = 59.8\text{ m}$, yielding a sweep area of $A = \pi \cdot L^2 \approx 11,234.4\text{ m}^2$.
+  $$E_w = \frac{1}{2} \rho A (v_{\text{m/s}})^3 \cdot 20 \cdot \frac{1}{1000} \quad (\text{kW})$$
   *(Wind speed is converted from kph to m/s by multiplying by $0.27778$.)*
-- **Solar Energy ($E_s$):** Modeled for a local solar park with active panel surface area $A_{	ext{solar}} = 5,000 	ext{ m}^2$ and average efficiency $\eta = 18\%$.
-  $$E_s = A_{	ext{solar}} \cdot \eta \cdot I_{	ext{radiation}} \cdot rac{1}{1000} \quad (	ext{kW})$$
+- **Solar Energy ($E_s$):** Modeled for a local solar park with active panel surface area $A_{\text{solar}} = 5,000 \text{ m}^2$ and average efficiency $\eta = 18\%$.
+  $$E_s = A_{\text{solar}} \cdot \eta \cdot I_{\text{radiation}} \cdot \frac{1}{1000} \quad (\text{kW})$$
 
 ---
 
@@ -67,14 +65,14 @@ Model performance is evaluated on the holdout test set (final 20% of the timelin
 ## 5. Cost-Optimized Decision-Making System
 
 The typical daily consumer energy requirement is loaded from `requirement.csv`. We evaluate surplus as:
-$$	ext{Surplus}_t = 	ext{Generation}_t - 	ext{Requirement}_t$$
+$$\text{Surplus}_t = \text{Generation}_t - \text{Requirement}_t$$
 
 ### Operational Cost Model:
 - **False Positive (Deficit) Cost ($C_{FP}$):** Offering free energy during a deficit. The company must buy spot-market power to cover customer demand. **Cost = £0.20 per kWh**.
 - **False Negative (Opportunity) Cost ($C_{FN}$):** Underestimating surplus, resulting in wasted/curtailed green power. **Cost = £0.02 per kWh**.
 
 ### Threshold Optimization Results:
-A naive threshold ($	ext{Surplus} > 0.0	ext{ kW}$) suffers high costs due to the 10x penalty of False Positives. We swept the predicted surplus threshold $	heta$ to minimize total cost:
+A naive threshold ($\text{Surplus} > 0.0\text{ kW}$) suffers high costs due to the 10x penalty of False Positives. We swept the predicted surplus threshold $\theta$ to minimize total cost:
 - **Brighton:** The optimal surplus threshold is **15.0 MW (15,000 kW)**, reducing operational cost from £10.45M to £6.27M (**40.0% financial savings**, saving **£4.18M**).
 - **Colchester:** The optimal surplus threshold is **14.8 MW (14,798 kW)**, reducing operational cost from £7.55M to £4.19M (**44.5% financial savings**, saving **£3.36M**).
 
